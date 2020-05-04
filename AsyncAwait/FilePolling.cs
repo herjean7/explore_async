@@ -6,19 +6,15 @@ namespace AsyncAwait
 {
     public class FilePolling
     {
-        public async Task CheckFileIDAsync(string file_directory, string keyword)
+        public async Task<string> CheckFileIDAsync(string file_directory, string keyword)
         {
-            Console.WriteLine("Enter CheckFileID method");
-
             string fileid = await Task.Run(() => GetFileIDWithKeyword(file_directory, keyword));
 
-            Console.WriteLine("this is executed after await task");
+            return fileid;
         }
 
         private string GetFileIDWithKeyword(string file_directory, string keyword)
         {
-            Console.WriteLine("Enter GetFileNameWithKeyword method");
-
             string selectedfilename = string.Empty;
             string fileid = "error";
             
@@ -42,8 +38,6 @@ namespace AsyncAwait
                 Task.Delay(30000).Wait();
             }
 
-            Console.WriteLine(selectedfilename);
-
             if (selectedfilename != string.Empty)
             {
                 //split out the fileid keyword-fileid-xxxx.pdf
@@ -51,7 +45,7 @@ namespace AsyncAwait
                 fileid = fileInfoArray[1].ToString();
             }
 
-            Console.WriteLine("Fileid is " + fileid);
+            Console.WriteLine(fileid);
         
             return fileid;
         }

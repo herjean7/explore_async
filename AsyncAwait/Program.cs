@@ -6,7 +6,7 @@ namespace AsyncAwait
 {
     class Program
     {
-        static string fileDirectory = @"DIRECTORY_PATH\";
+        static string fileDirectory = @"DIRECTORY_PATH";
 
         static void Main(string[] args)
         {
@@ -14,9 +14,12 @@ namespace AsyncAwait
 
             FilePolling poll = new FilePolling();
 
-            poll.CheckFileIDAsync(fileDirectory, "hello");
+            Task<string> documentid = poll.CheckFileIDAsync(fileDirectory, "hello");
             
             Console.WriteLine("This runs outside of async codes");
+
+            Task.WaitAll(documentid);
+            Console.WriteLine("document id is : " + documentid.Result);
 
             Console.ReadKey();
         }
