@@ -6,7 +6,7 @@ namespace AsyncAwait
 {
     class Program
     {
-        static string fileDirectory = @"C:\Users\wongh\Documents\test";
+        static string fileDirectory = @"DIRECTORY_PATH\";
 
         static TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
 
