@@ -6,7 +6,7 @@ namespace AsyncAwait
     public class Application : IApplication
     {
         IFilePolling _filepolling;
-        static string fileDirectory = @"C:\Users\wongh\Documents\test";
+        static string fileDirectory = @"DIRECTORY_PATH";
 
         public Application(IFilePolling filePolling)
         {
