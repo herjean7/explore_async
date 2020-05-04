@@ -25,8 +25,6 @@ namespace AsyncAwait
             for(int iteration_count = 1; iteration_count < 5; iteration_count++) 
             {
                 //go to the path and all files
-                Console.WriteLine(selectedfilename);
-                Console.WriteLine("iteration" + iteration_count.ToString());
                 string[] fileEntries = Directory.GetFiles(file_directory);
 
                 foreach (string filename in fileEntries)
@@ -41,10 +39,7 @@ namespace AsyncAwait
                 if (selectedfilename != string.Empty || iteration_count == 4)
                     break;
 
-                Console.WriteLine("about to apply delay");
                 Task.Delay(30000).Wait();
-                Console.WriteLine("delay applied");
-                Console.WriteLine(iteration_count.ToString());
             }
 
             Console.WriteLine(selectedfilename);
@@ -57,7 +52,6 @@ namespace AsyncAwait
             }
 
             Console.WriteLine("Fileid is " + fileid);
-            Console.WriteLine("Exit GetFileNameWithKeyword method");
         
             return fileid;
         }

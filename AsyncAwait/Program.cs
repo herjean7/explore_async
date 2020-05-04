@@ -8,8 +8,6 @@ namespace AsyncAwait
     {
         static string fileDirectory = @"DIRECTORY_PATH\";
 
-        static TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
-
         static void Main(string[] args)
         {
             Console.WriteLine("Start");
@@ -18,7 +16,7 @@ namespace AsyncAwait
 
             poll.CheckFileIDAsync(fileDirectory, "hello");
             
-            Console.WriteLine("This is outside of async codes");
+            Console.WriteLine("This runs outside of async codes");
 
             Console.ReadKey();
         }
