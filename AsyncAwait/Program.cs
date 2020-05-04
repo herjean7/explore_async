@@ -1,28 +1,18 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Timers;
+﻿using Autofac;
 
 namespace AsyncAwait
 {
     class Program
     {
-        static string fileDirectory = @"DIRECTORY_PATH";
-
         static void Main(string[] args)
         {
-            Console.WriteLine("Start");
+            var container = ContainerConfig.Configure();
 
-            FilePolling poll = new FilePolling();
-
-            Task<string> documentid = poll.CheckFileIDAsync(fileDirectory, "hello");
-            
-            Console.WriteLine("This runs outside of async codes");
-
-            Task.WaitAll(documentid);
-            Console.WriteLine("document id is : " + documentid.Result);
-
-            Console.ReadKey();
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var app = scope.Resolve<IApplication>();
+                app.Run();
+            }
         }
-
     }
 }

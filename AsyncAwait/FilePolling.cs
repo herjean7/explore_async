@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace AsyncAwait
 {
-    public class FilePolling
+    public class FilePolling : IFilePolling
     {
         public async Task<string> CheckFileIDAsync(string file_directory, string keyword)
         {
@@ -17,8 +17,8 @@ namespace AsyncAwait
         {
             string selectedfilename = string.Empty;
             string fileid = "error";
-            
-            for(int iteration_count = 1; iteration_count < 5; iteration_count++) 
+
+            for (int iteration_count = 1; iteration_count < 5; iteration_count++)
             {
                 //go to the path and all files
                 string[] fileEntries = Directory.GetFiles(file_directory);
@@ -46,7 +46,7 @@ namespace AsyncAwait
             }
 
             Console.WriteLine(fileid);
-        
+
             return fileid;
         }
     }
